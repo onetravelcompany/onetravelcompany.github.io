@@ -8,7 +8,10 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	
+	if (window.location.href.includes("admin")) {
+            // Redirect to the desired URL without changing the URL
+            window.location.replace("https://admin.onetravelcompany.com/admin/");
+        }
 	var siteMenuClone = function() {
 
 		$('.js-clone-nav').each(function() {
