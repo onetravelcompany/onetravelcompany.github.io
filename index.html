@@ -292,10 +292,16 @@
                 <p>🌟✈️ Join Our Adventure-Seekers Newsletter! ✈️🌟!</p>
                 <form id="subscribeForm" action="#" method="post" class="d-flex subscribe">
                   <input type="hidden" name="reason" value="newsletter">
-                  <input type="text" name="email" id="emailInput" class="form-control mr-3" placeholder="Email">
+                  
+                  <!-- Email input field with type set to "email" and required attribute -->
+                  <input type="email" name="email" id="emailInput" class="form-control mr-3" placeholder="Email" required>
+                  
                   <input type="text" name="reason_display" class="form-control mr-3" value="newsletter" style="display: none;">
-                  <input type="submit" value="Send" class="btn btn-primary">
+                  
+                  <!-- Send button with Bootstrap classes for styling -->
+                  <input type="submit" value="Send" class="btn btn-primary btn-sm" style="height: 55px;">
               </form>
+              
               
               <div id="successMessage" style="display: none;" class="alert alert-success">
                   Thank you for subscribing!
