@@ -231,8 +231,8 @@
                 <li class="d-block mb-3">
                   <span class="d-block text-black">Address:</span>
                   <span>Koroglu Rahimov Street 61, AZ1008, Baku, Azerbaijan</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+994 51 531 46 47</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>contact@onetravelcompany.com</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+994 77 304 73 50</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>sales@onetravelcompany.com</span></li>
               </ul>
             </div>
           </div>
@@ -246,7 +246,8 @@
           <div class="col-md-7 text-center">
             <h2 class="font-weight-bold text-white">Join Our Team</h2>
             <p class="text-white">Experience the thrill of adventure while helping others explore the world by joining our dynamic team of travel enthusiasts!</p>
-            <p class="mb-0"><a href="#" class="btn btn-primary text-white py-3 px-4">Get In Touch</a></p>
+            <p class="mb-0">
+              <a href="#" class="btn btn-primary text-white py-3 px-4" onClick="scrollToSection('our-contacts')">Get In Touch</a></p>
           </div>
         </div>
       </div>
@@ -258,12 +259,12 @@
             <h2 class="footer-heading mb-3">Instagram</h2>
             <div class="row">
               <div class="col-4 gal_col">
-                <a href="#"><img src="images/insta_1.jpg" alt="Image" class="img-fluid"></a>
+                <a href="https://www.instagram.com/p/C5lmsyONUi1/"><img src="images/insta1.png" alt="Image" class="img-fluid" style="width: 100px; height: 80px;"></a>
               </div>
               <div class="col-4 gal_col">
-                <a href="#"><img src="images/insta_2.jpg" alt="Image" class="img-fluid"></a>
+                <a href="https://www.instagram.com/p/C5lmsyONUi1/"><img src="images/insta2.png" alt="Image" class="img-fluid" style="width: 100px; height: 80px;"></a>
               </div>
-              <div class="col-4 gal_col">
+              <!-- <div class="col-4 gal_col">
                 <a href="#"><img src="images/insta_3.jpg" alt="Image" class="img-fluid"></a>
               </div>
               <div class="col-4 gal_col">
@@ -274,7 +275,7 @@
               </div>
               <div class="col-4 gal_col">
                 <a href="#"><img src="images/insta_6.jpg" alt="Image" class="img-fluid"></a>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-lg-8 ml-auto">
@@ -289,10 +290,51 @@
               <div class="col-lg-6">
                 <h2 class="footer-heading mb-4">Newsletter</h2>
                 <p>🌟✈️ Join Our Adventure-Seekers Newsletter! ✈️🌟!</p>
-                <form action="#" class="d-flex" class="subscribe">
-                  <input type="text" class="form-control mr-3" placeholder="Email">
+                <form id="subscribeForm" action="#" method="post" class="d-flex subscribe">
+                  <input type="hidden" name="reason" value="newsletter">
+                  <input type="text" name="email" id="emailInput" class="form-control mr-3" placeholder="Email">
+                  <input type="text" name="reason_display" class="form-control mr-3" value="newsletter" style="display: none;">
                   <input type="submit" value="Send" class="btn btn-primary">
-                </form>
+              </form>
+              
+              <div id="successMessage" style="display: none;" class="alert alert-success">
+                  Thank you for subscribing!
+              </div>
+              
+              <script>
+              document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+                  event.preventDefault();
+              
+                  const form = event.target;
+                  const formData = new FormData(form);
+                  const url = 'https://booking.onetravelcompany.com/emailregister/';
+              
+                  fetch(url, {
+                      method: 'POST',
+                      body: formData
+                  })
+                  .then(response => {
+                      if (!response.ok) {
+                          throw new Error('Network response was not ok');
+                      }
+                      return response.json();
+                  })
+                  .then(data => {
+                      console.log('Success:', data);
+                      // Display success message
+                      document.getElementById('successMessage').style.display = 'block';
+                  })
+                  .catch((error) => {
+                      console.error('Error:', error);
+                      // Handle error, e.g., show an error message to the user
+                  });
+                  document.getElementById('successMessage').style.display = 'block';
+
+              });
+
+              </script>
+              
+              
               </div>
               
             </div>
